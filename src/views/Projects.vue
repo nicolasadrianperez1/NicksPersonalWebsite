@@ -1,13 +1,26 @@
-  <template>
-    <div class="home-container">
+<template>
+  <div class="home-container" :style="{ backgroundImage: `url(${backgroundImage})` }">
+    <div id="typing-container">
       <h1>Projects Page</h1>
-      <p> .. updating really soon with interactable links to games aswell as a directory to my github! </p>
+      <p> This is my dog </p>
     </div>
-  </template>
+  </div>
+
+</template>
   
   <script>
+  import asher from '../assets/asher-pic.jpg';
+  import profilePic from '../assets/profile-pic.jpeg';
+
   export default {
-    name: 'Projects',
+    name: 'Experiences',
+    data () {
+      return {
+        profileImage : profilePic,
+        backgroundImage : asher
+      }
+    }
+    
   };
   </script>
   
@@ -22,4 +35,15 @@
     justify-content: center;
     position: relative; 
   }
+  #typing-container {
+  text-align: center;  
+  font-size: 3rem;  
+  z-index: 1; /* Ensure text stays above background image */  
+  position: absolute; /* Make it absolute so it can be placed anywhere in the container */  
+  top: 20%; /* Push it halfway down the container */  
+  left: 50%; /* Center it horizontally */  
+  transform: translate(-50%, -50%); /* Center it vertically */
+  margin-top: 200px;
+  color: rgb(56, 16, 233);
+}
   </style>

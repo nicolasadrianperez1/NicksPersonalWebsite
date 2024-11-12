@@ -20,7 +20,7 @@
           </p>
         </div>
         <p>
-          Hi! My name is Nicolas Perez, and I am a 21 year old senior studying Data Science and Enviormental Economics at UC Berkeley. Some of my favorite free time activities include watching the LA Lakers!, going on runs, exploring new restaurants with friends, and listening to music. From a young age, I have known that my proffesional goals and priority include making a real positive impact. Whether that be impacting people who use a particular product or impacting a team developing a product, my ambition guides me daily in wanting to make my future meaningful. I am super eager to continue my journey within the field of software engineering and data science.
+          Hi! My name is Nicolas Perez, and I am a 21 year old senior studying Data Science and Enviormental Economics at UC Berkeley. Some of my favorite free time activities include watching the LA Lakers!, going on runs, exploring new restaurants with friends, and listening to music. From a young age, I have known that my proffesional goals and priorities include making a real positive impact. Whether that be impacting people who use a particular product or impacting a team developing a product, my ambition guides me daily in wanting to make my future meaningful. I am super eager to continue my journey within the field of software engineering and data science.
         </p>
       </div>
       <div class="bio-image">
@@ -44,7 +44,7 @@
       <div class="skills-block">
         <h3>Frontend Development</h3>
         <ul>
-          <li>HTML - Experienced</li>
+          <li><i class="fas fa-code"></i> HTML - Experienced</li>
           <li>CSS - Experienced</li>
           <li>JavaScript - Experienced</li>
           <li>React.js - Experienced</li>
@@ -66,9 +66,11 @@
       <div class="skills-block">
         <h3>Other Skills</h3>
         <ul>
-          <li>Statistical Analysis - Experienced</li>
+          <li>Data Visualization - Experienced</li>
           <li>NLP - Experienced</li>
-          <li>Business Management - Experienced</li>
+          <li>Data Mining - Experienced</li>
+          <li>Excel - Experienced</li>
+          <li>Project Management- Experienced</li>
         </ul>
       </div>
     </div>
@@ -104,6 +106,7 @@ export default {
     };
   },
   mounted() {
+    // Typing effect code
     let textToType = "Welcome to Nick's Page!";
     let index = 0;
     let typedTextElement = document.getElementById('typed-text');
@@ -124,8 +127,25 @@ export default {
       typeWriter();
     }
 
-    typeWriter();
+    typeWriter(); // Start the typing effect
+
+    // Scroll animation for skill blocks
+    const skillsBlocks = document.querySelectorAll('.skills-block');
+
+  function handleScroll() {
+    skillsBlocks.forEach(block => {
+      const blockTop = block.getBoundingClientRect().top;
+      const blockBottom = block.getBoundingClientRect().bottom;
+      if (blockTop < window.innerHeight - 100 && blockBottom > 0) {
+        block.classList.add('show'); // Add the show class if in view
+      } else {
+        block.classList.remove('show'); // Remove the show class if out of view
+      }
+    });
   }
+
+  window.addEventListener('scroll', handleScroll);
+}
 };
 </script>
 
@@ -276,31 +296,64 @@ h3 {
 /* skills section */
 
 .skills-section {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between skill cards */
+  width: 100%; /* Make sure it takes up the full width */
   padding: 20px;
+  box-sizing: border-box; /* Ensure padding doesn’t break the layout */
+  justify-content: right; /* Center the skill boxes */  
+  align-items: right;
 }
 .skills-block {
   background-color: rgba(127, 140, 150, 0.686);
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid black;
-  width: 300px;
-  text-align: center;
-  margin-right: 80px;
-  margin-left: 80px;
+  padding: 20px;  
+  border-radius: 15px;  
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */  
+  transition: transform 0.3s ease; /* Animation for hover effect */  
+  width: 300px;  text-align: center;  
+  margin: 20px;
+  opacity: 0;
+  /* transform: translateY(20px);  
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; */
+}
+.skills-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.skills-block.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.skills-block:hover {
+  transform: scale(1.05); /* Slightly enlarge the card on hover */
 }
 .skills-block h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  font-style: italic;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  position: relative;
 }
+.skills-block h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #ffa500; /* Accent color */
+}
+
 .skills-block ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
+
 .skills-block li {
-  font-size: 18px;
+  font-size: 1.1rem;
   margin-bottom: 10px;
   color: white;
 }
@@ -360,21 +413,22 @@ h3 {
 }
 
 .resume-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  color: #333;
   text-decoration: none;
-  color: black;
+  margin-top: 15px;
   transition: color 0.3s ease;
 }
 
-.resume-link i {
-  font-size: 2rem;
-  margin-right: 10px;
+.resume-link:hover {
+  color: #ffa500; /* Accent color on hover */
 }
 
-.resume-link:hover {
-  color: #ffa500; /* Optional: Changes color on hover */
+.resume-link i {
+  margin-right: 10px;
+  font-size: 1.5rem;
 }
 
 /* Different screen sizes */
@@ -411,8 +465,6 @@ h3 {
     font-size: 1rem;
   }
 }
-
-
 
 </style>
   

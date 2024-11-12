@@ -90,7 +90,7 @@ main {
 .footer {
   background-color: black;
   padding: 20px;
-  width: 100vw; /* Ensure footer spans the full width */
+  width: 98vw; /* Ensure footer spans the full width */
   display: flex;
   justify-content: center;
   align-items: center;
