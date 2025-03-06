@@ -4,7 +4,7 @@
     <div class="home-container" :style="{ backgroundImage: `url(${backgroundImage})` }">
       <div id="typing-container">
         <h1>Experiences Page</h1>
-        <p>Elephants are awesome</p>
+        <p>website needs update</p>
       </div>
     </div>
 
