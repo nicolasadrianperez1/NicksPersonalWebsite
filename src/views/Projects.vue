@@ -48,11 +48,10 @@
   margin-top: 200px;
 }
 h1 {
-  color: black;
-  -webkit-text-stroke: 2px white;
-  text-shadow: 0 0 5px white;
-  font-size: 48px;
   font-weight: bold;
-  transition: text-shadow 0.3s ease-in-out;
+  color: black;
+  font-size: 4rem;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
   </style>

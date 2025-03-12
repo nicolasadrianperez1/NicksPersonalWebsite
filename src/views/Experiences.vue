@@ -11,36 +11,38 @@
     <!-- Technical Experiences Slider -->
     <div class="slider-container">
       <h2>Technical Experiences</h2>
-      <Carousel :loop="true" :perPage="2" wrap-around>
-        <Slide v-for="(exp, index) in technicalExperiences" :key="index">
-          <div @click="navigateToDetail(exp.link)" class="card">
-            <img :src="exp.image" alt="Experience Image" />
-            <p>{{ exp.name }}</p>
-          </div>
-        </Slide>
-      </Carousel>
+      <button @click="moveToNextCard('technical')">Next</button>
+      <div class="card-container">
+        <img
+          v-for="(exp, i) in orderedTechnicalExperiences"
+          :key="exp.name"
+          class="card"
+          :class="`card-${i + 1}`"
+          :src="exp.image"
+          alt="Experience Image"
+        />
+      </div>
     </div>
 
     <!-- Other Experiences Slider -->
     <div class="slider-container">
       <h2>Other Experiences</h2>
-      <Carousel :loop="true" :perPage="2" wrap-around>
-        <Slide v-for="(exp, index) in otherExperiences" :key="index">
-          <div @click="navigateToDetail(exp.link)" class="card">
-            <img :src="exp.image" alt="Experience Image" />
-            <p>{{ exp.name }}</p>
-          </div>
-        </Slide>
-      </Carousel>
+      <button @click="moveToNextCard('other')">Next</button>
+      <div class="card-container">
+        <img
+          v-for="(exp, i) in orderedOtherExperiences"
+          :key="exp.name"
+          class="card"
+          :class="`card-${i + 1}`"
+          :src="exp.image"
+          alt="Experience Image"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css';
-
-import elephants from '../assets/elephant.jpeg';
 import glade from '../assets/glade-pic.jpeg';
 import hoamsy from '../assets/hoamsy-logo.png';
 import berkeleyEECS from '../assets/berkeley-eecs-logo.png';
@@ -49,39 +51,52 @@ import cyc from '../assets/cyc-logo.jpeg';
 import brb from '../assets/brb-logo.png';
 import amazon from '../assets/amazon-logo.png';
 import csm from '../assets/csm picture.png';
+import gpn from '../assets/gpn-picture.png';
 
 export default {
-  name: 'Experiences',
-  components: {
-    Carousel,
-    Slide,
-  },
   data() {
     return {
       backgroundImage: glade,
+      technicalIndex: 0,
+      otherIndex: 0,
       technicalExperiences: [
-        { name: 'Hoamsy', image: hoamsy, link: '/experiences/hoamsy' },
-        { name: 'Berkeley EECS', image: berkeleyEECS, link: '/experiences/berkeley-eecs' },
-        { name: 'EarnUp', image: earnup, link: '/experiences/earnup' },
+        { name: 'Hoamsy', image: hoamsy },
+        { name: 'Berkeley EECS', image: berkeleyEECS },
+        { name: 'EarnUp', image: earnup },
       ],
       otherExperiences: [
-        { name: 'Consult Your Community', image: cyc, link: '/experiences/cyc' },
-        { name: 'Computer Science Mentors', image: csm, link: '/experiences/csm'},
-        { name: 'BRB', image: brb, link: '/experiences/brb' },
-        { name: 'Amazon', image: amazon, link: '/experiences/amazon' },
+        { name: 'Consult Your Community', image: cyc },
+        { name: 'Computer Science Mentors', image: csm },
+        { name: 'BRB', image: brb },
+        { name: 'Amazon', image: amazon },
+        { name: 'Green Power Network', image: gpn },
       ],
     };
   },
+  computed: {
+    orderedTechnicalExperiences() {
+      return this.rotateArray(this.technicalExperiences, this.technicalIndex);
+    },
+    orderedOtherExperiences() {
+      return this.rotateArray(this.otherExperiences, this.otherIndex);
+    },
+  },
   methods: {
-    navigateToDetail(link) {
-      this.$router.push(link);
+    moveToNextCard(type) {
+      if (type === 'technical') {
+        this.technicalIndex = (this.technicalIndex + 1) % this.technicalExperiences.length;
+      } else {
+        this.otherIndex = (this.otherIndex + 1) % this.otherExperiences.length;
+      }
+    },
+    rotateArray(array, index) {
+      return [...array.slice(index), ...array.slice(0, index)];
     },
   },
 };
 </script>
 
 <style scoped>
-/* Background container with page title */
 .home-container {
   height: 100vh;
   width: 100%;
@@ -106,54 +121,41 @@ export default {
   margin-top: 200px;
 }
 
-h1 {
-  color: black;
-  -webkit-text-stroke: 2px white;
-  text-shadow: 0 0 5px white;
-  font-size: 48px;
-  font-weight: bold;
-  transition: text-shadow 0.3s ease-in-out;
-}
-/* Slider containers */
 .slider-container {
-  margin: 20px 0;
-  padding: 20px;
   text-align: center;
+  margin: 30px 0;
 }
 
-h2 {
-  margin-bottom: 20px;
-  color: #333;
+.card-container {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  margin: auto;
 }
 
-/* Card styling */
 .card {
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  padding: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.card img {
+  position: absolute;
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 10px;
+  transition: transform 0.5s ease-in-out;
 }
 
-.card p {
-  margin-top: 10px;
-  font-weight: bold;
+.card-1 {
+  transform: translate(0, 0) scale(1);
+  z-index: 3;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.card-2 {
+  transform: translate(15px, -15px) scale(0.9);
+  z-index: 2;
+}
+
+.card-3 {
+  transform: translate(25px, -25px) scale(0.8);
+  z-index: 1;
 }
 </style>
-
 
 
   
