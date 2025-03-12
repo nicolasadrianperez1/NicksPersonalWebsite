@@ -98,7 +98,7 @@ export default {
 
 <style scoped>
 .home-container {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -139,26 +139,27 @@ h2 {
 .card-container {
   position: relative;
   width: 200px;
-  height: 300px;
-  margin: auto;
+  height: 400px;
+  margin-bottom: 100px;
+  margin-top: 100px;
 }
 
 .card {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100px;
   border-radius: 10px;
   transition: transform 0.5s ease-in-out;
 }
 
 .card-1 {
   transform: translate(0, 0) scale(1);
-  z-index: 3;
+  z-index: 6;
 }
 
 .card-2 {
   transform: translate(15px, -15px) scale(0.9);
-  z-index: 2;
+  z-index: 3;
 }
 
 .card-3 {

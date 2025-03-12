@@ -26,7 +26,7 @@
   
   <style scoped>
  .home-container {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   background-size: cover;
   background-position: center;
