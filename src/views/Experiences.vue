@@ -159,10 +159,11 @@ h2 {
 .card-container {
   position: relative;
   width: 400px;
-  height: 300px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
 
 .card {
