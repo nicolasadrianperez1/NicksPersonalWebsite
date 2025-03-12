@@ -41,12 +41,14 @@ import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 
 import elephants from '../assets/elephant.jpeg';
+import glade from '../assets/glade-pic.jpeg';
 import hoamsy from '../assets/hoamsy-logo.png';
 import berkeleyEECS from '../assets/berkeley-eecs-logo.png';
 import earnup from '../assets/earnup-logo.jpeg';
 import cyc from '../assets/cyc-logo.jpeg';
 import brb from '../assets/brb-logo.png';
 import amazon from '../assets/amazon-logo.png';
+import csm from '../assets/csm picture.png';
 
 export default {
   name: 'Experiences',
@@ -56,7 +58,7 @@ export default {
   },
   data() {
     return {
-      backgroundImage: elephants,
+      backgroundImage: glade,
       technicalExperiences: [
         { name: 'Hoamsy', image: hoamsy, link: '/experiences/hoamsy' },
         { name: 'Berkeley EECS', image: berkeleyEECS, link: '/experiences/berkeley-eecs' },
@@ -64,6 +66,7 @@ export default {
       ],
       otherExperiences: [
         { name: 'Consult Your Community', image: cyc, link: '/experiences/cyc' },
+        { name: 'Computer Science Mentors', image: csm, link: '/experiences/csm'},
         { name: 'BRB', image: brb, link: '/experiences/brb' },
         { name: 'Amazon', image: amazon, link: '/experiences/amazon' },
       ],
@@ -101,9 +104,16 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   margin-top: 200px;
-  color: rgb(56, 16, 233);
 }
 
+h1 {
+  color: black;
+  -webkit-text-stroke: 2px white;
+  text-shadow: 0 0 5px white;
+  font-size: 48px;
+  font-weight: bold;
+  transition: text-shadow 0.3s ease-in-out;
+}
 /* Slider containers */
 .slider-container {
   margin: 20px 0;

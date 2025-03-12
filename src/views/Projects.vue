@@ -25,16 +25,18 @@
   </script>
   
   <style scoped>
-  .home-container {
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    background-position: center;
-    margin-left: 100px;
-    padding-top: 100px;
-    justify-content: center;
-    position: relative; 
-  }
+ .home-container {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border-bottom: 5px solid black; /* Add this to create a border */
+}
   #typing-container {
   text-align: center;  
   font-size: 3rem;  
@@ -44,6 +46,13 @@
   left: 50%; /* Center it horizontally */  
   transform: translate(-50%, -50%); /* Center it vertically */
   margin-top: 200px;
-  color: rgb(56, 16, 233);
+}
+h1 {
+  color: black;
+  -webkit-text-stroke: 2px white;
+  text-shadow: 0 0 5px white;
+  font-size: 48px;
+  font-weight: bold;
+  transition: text-shadow 0.3s ease-in-out;
 }
   </style>
