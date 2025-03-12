@@ -120,7 +120,17 @@ export default {
   transform: translate(-50%, -50%);
   margin-top: 200px;
 }
-
+h1 {
+  font-weight: bold;
+  color: black;
+  font-size: 4rem;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
 .slider-container {
   text-align: center;
   margin: 30px 0;
