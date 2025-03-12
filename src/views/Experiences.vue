@@ -138,10 +138,9 @@ h2 {
 
 .card-container {
   position: relative;
-  width: 200px;
-  height: 400px;
-  margin-bottom: 100px;
-  margin-top: 100px;
+  width: 400px;
+  height: 300px;
+  margin: auto;
 }
 
 .card {
@@ -154,17 +153,17 @@ h2 {
 
 .card-1 {
   transform: translate(0, 0) scale(1);
-  z-index: 6;
+  z-index: 10;
 }
 
 .card-2 {
   transform: translate(15px, -15px) scale(0.9);
-  z-index: 3;
+  z-index: 7;
 }
 
 .card-3 {
   transform: translate(25px, -25px) scale(0.8);
-  z-index: 1;
+  z-index: 4;
 }
 </style>
 
