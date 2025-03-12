@@ -11,32 +11,38 @@
     <!-- Technical Experiences Slider -->
     <div class="slider-container">
       <h2>Technical Experiences</h2>
-      <button @click="moveToNextCard('technical')">Next</button>
-      <div class="card-container">
-        <img
-          v-for="(exp, i) in orderedTechnicalExperiences"
-          :key="exp.name"
-          class="card"
-          :class="`card-${i + 1}`"
-          :src="exp.image"
-          alt="Experience Image"
-        />
+      <div class="slider-controls">
+        <button @click="moveToNextCard('technical')" class="arrow left">&#10094;</button>
+        <div class="card-container">
+          <img
+            v-for="(exp, i) in orderedTechnicalExperiences"
+            :key="exp.name"
+            class="card"
+            :class="`card-${i + 1}`"
+            :src="exp.image"
+            alt="Experience Image"
+          />
+        </div>
+        <button @click="moveToNextCard('technical')" class="arrow right">&#10095;</button>
       </div>
     </div>
 
     <!-- Other Experiences Slider -->
     <div class="slider-container">
       <h2>Other Experiences</h2>
-      <button @click="moveToNextCard('other')">Next</button>
-      <div class="card-container">
-        <img
-          v-for="(exp, i) in orderedOtherExperiences"
-          :key="exp.name"
-          class="card"
-          :class="`card-${i + 1}`"
-          :src="exp.image"
-          alt="Experience Image"
-        />
+      <div class="slider-controls">
+        <button @click="moveToNextCard('other')" class="arrow left">&#10094;</button>
+        <div class="card-container">
+          <img
+            v-for="(exp, i) in orderedOtherExperiences"
+            :key="exp.name"
+            class="card"
+            :class="`card-${i + 1}`"
+            :src="exp.image"
+            alt="Experience Image"
+          />
+        </div>
+        <button @click="moveToNextCard('other')" class="arrow right">&#10095;</button>
       </div>
     </div>
   </div>
@@ -120,6 +126,7 @@ export default {
   transform: translate(-50%, -50%);
   margin-top: 200px;
 }
+
 h1 {
   font-weight: bold;
   color: black;
@@ -127,26 +134,41 @@ h1 {
   font-family: 'Georgia', serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
+
 h2 {
   margin-bottom: 20px;
   color: #333;
+  text-align: center;
 }
+
 .slider-container {
   text-align: center;
   margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .card-container {
   position: relative;
   width: 400px;
   height: 300px;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
   position: absolute;
   width: 100%;
-  height: 100px;
+  height: 100%;
   border-radius: 10px;
   transition: transform 0.5s ease-in-out;
 }
@@ -157,15 +179,24 @@ h2 {
 }
 
 .card-2 {
-  transform: translate(15px, -15px) scale(0.9);
+  transform: translate(20px, -20px) scale(0.95);
   z-index: 7;
 }
 
 .card-3 {
-  transform: translate(25px, -25px) scale(0.8);
+  transform: translate(40px, -40px) scale(0.9);
   z-index: 4;
 }
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.arrow:hover {
+  color: black;
+}
 </style>
-
-
-  
